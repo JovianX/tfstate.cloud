@@ -1,12 +1,12 @@
-# tfstatecloud-get
+# Terraform state in the ☁️
 
-            The simplest way to securely store the Terraform **State** and **Locks** in the cloud.
-            No browser, no custom clients, and no cumbersome configuration required.
-            Works magically right from the `terminal`.
+The simplest way to securely store the Terraform **State** and **Locks** in the cloud.
+No browser, no custom clients, and no cumbersome configuration required.
+Works magically right from the `terminal`.
 
-            ```
-            $ curl https://get.tfstate.cloud
-            ```
+            
+            curl https://get.tfstate.cloud
+            
 
 
 
