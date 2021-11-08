@@ -15,7 +15,7 @@ ENV GOOGLE_APPLICATION_CREDENTIALS="/app/firebase.json"
 
 RUN addgroup --gid 1001 --system app && \
     adduser --shell /bin/false --disabled-password --uid 1001 --system --group app
-# USER app
+USER app
 COPY --from=builder /app/wheels /wheels
 COPY --from=builder /app/ /app/
 RUN pip install --no-cache /wheels/*
