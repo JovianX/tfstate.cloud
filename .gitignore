@@ -1,0 +1,5 @@
+__pycache__
+stateserver
+.stateserver
+*.json
+docker-compose.yaml

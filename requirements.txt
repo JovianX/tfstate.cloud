@@ -1,0 +1,7 @@
+gunicorn
+flask
+flask_restful
+flask_httpauth
+authentication
+requests
+google-cloud-firestore

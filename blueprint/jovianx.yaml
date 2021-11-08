@@ -1,0 +1,68 @@
+# JovianX API Compatibility
+# v1
+jovianx_api_version: v1
+
+# Name of this SaaS application
+# string
+application_name: tfstatecloud
+
+# Blueprint type.
+# stack - Application stacks. Useful to provisioning cluster infrastructure and
+#         setuping account application infrastructure.
+# account - Application for account. Application that should be launched for
+#           each account.
+application_type: account
+
+# version of this JovianX blueprint
+# semantic versioning
+version: 1.0.0
+
+main_endpoint_component: tfstate
+
+application_launch_timeout:
+  tries_count: 120
+  seconds_between_tries: 5
+
+status_check:
+  failure_threshold: 1
+
+components:
+  - name: tfstate
+    version: 1.0.0
+    provider: helm_chart # helm_chart | docker
+    helm_chart_name: tfstate
+    helm_set:
+      - key: ingress.enabled
+        value: true
+      - key: vendor_company
+        value: '{{ account://vendor_company }}'
+      - key: end_company
+        value: '{{ account://end_company }}'
+      - key: account_api_key
+        value: '{{ account://account_api_key }}'
+      - key: admin_email
+        value: '{{ account://admin_email }}'
+      - key: admin_password
+        value: '{{ account://admin_password }}'
+      - key: api_host
+        value: '{{ account://api_host }}'
+      - key: firstname
+        value: '{{ account://firstname }}'
+      - key: lastname
+        value: '{{ account://lastname }}'
+
+settings_descriptors:
+  - name: launchSecondNodeComponent
+    display: 'Enable Addon componnet - (Switch Example)'
+    description: 'Enables or disable node component helm release creation.'
+    input_type: checkbox
+    default: true
+    select_options:
+      - name: true
+        components:
+          - name: node-component2
+            enabled: true
+      - name: false
+        components:
+          - name: node-component2
+            enabled: false
